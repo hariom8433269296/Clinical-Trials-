@@ -14,7 +14,8 @@ if "page_index" not in st.session_state:
 
 pages = [
     "Key Features and Their Influence on Outcome",
-    "Distributions of Important Variables"
+    "Distributions of Important Variables",
+    "Model Performance and Ensemble Results"
 ]
 
 # Sidebar navigation
