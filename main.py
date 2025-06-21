@@ -5,7 +5,7 @@ import warnings
 
 warnings.filterwarnings("ignore")
 
-st.set_page_config(layout="wide")
+st.set_page_config(layout="wide", initial_sidebar_state="expanded")
 st.title("🧪 Clinical Trials Modeling Dashboard")
 
 # Session state to control navigation
