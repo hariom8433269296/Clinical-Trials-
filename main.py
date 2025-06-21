@@ -80,7 +80,7 @@ elif st.session_state.page_index == 1:
 elif st.session_state.page_index == 2:
     st.header("📈 Model Performance and Ensemble Results")
 
-    model_names = ["xgb_gbtree", "xgb_dart", "lgb_gbdt", "lgb_dart"]
+    model_names = ["xgb_gbtree", "lgb_gbdt", "lgb_dart", "rf_sklearn", "cat_Plain"]
 
     for model in model_names:
         st.subheader(f"🔍 Model: {model.upper()}")
