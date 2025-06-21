@@ -73,3 +73,33 @@ elif st.session_state.page_index == 1:
         width = 590 if "distribution_" in img_file and "barplot" not in img_file and "approval" in img_file else 1000
         st.image(os.path.join(img_dir, img_file), width=width)
         st.markdown("---")
+
+
+# Page 3: Model Performance and Ensemble Results
+elif st.session_state.page_index == 2:
+    st.header("📈 Model Performance and Ensemble Results")
+
+    model_names = ["xgb_gbtree", "xgb_dart", "lgb_gbdt", "lgb_dart"]
+
+    for model in model_names:
+        st.subheader(f"🔍 Model: {model.upper()}")
+
+        auc_chart = f"auc_progress_{model}.png"
+        if os.path.exists(os.path.join(img_dir, auc_chart)):
+            st.markdown("**AUC Progress Over Time**")
+            st.image(os.path.join(img_dir, auc_chart), width=1000)
+            st.markdown("---")
+
+    st.subheader("🔀 Optuna-Based Hill Climbing Ensemble")
+
+    ensemble_charts = [
+        ("optuna_hill_climbing_auc_progress.png", "Ensemble AUC Progress", "Tracks how ensemble performance improved during Optuna optimization."),
+        ("Final Ensemble Weights (Hill Climbing).png", "Final Weights of Each Model", "Shows how much each model contributed to the final ensemble."),
+        ("Individual Model AUC vs HillClimbed Ensemble.png", "Model vs Ensemble AUC", "Compares each model’s AUC to the ensemble’s performance.")
+    ]
+
+    for img_file, title, description in ensemble_charts:
+        st.markdown(f"**{title}**")
+        st.markdown(description)
+        st.image(os.path.join(img_dir, img_file), width=1000)
+        st.markdown("---")
