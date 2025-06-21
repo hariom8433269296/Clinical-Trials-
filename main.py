@@ -44,7 +44,8 @@ if st.session_state.page_index == 0:
         st.image(os.path.join(img_dir, img_file), width=590)
         st.markdown("---")
 
-    if st.session_state.page_index < len(pages) - 1:
+    col1, col2 = st.columns([1, 1])
+    with col2:
         if st.button("Next ➡️"):
             st.session_state.page_index += 1
             st.rerun()
@@ -75,6 +76,15 @@ elif st.session_state.page_index == 1:
         st.image(os.path.join(img_dir, img_file), width=width)
         st.markdown("---")
 
+    col1, col2 = st.columns([1, 1])
+    with col1:
+        if st.button("⬅️ Previous"):
+            st.session_state.page_index -= 1
+            st.rerun()
+    with col2:
+        if st.button("Next ➡️"):
+            st.session_state.page_index += 1
+            st.rerun()
 
 # Page 3: Model Performance and Ensemble Results
 elif st.session_state.page_index == 2:
@@ -104,3 +114,9 @@ elif st.session_state.page_index == 2:
         st.markdown(description)
         st.image(os.path.join(img_dir, img_file), width=1000)
         st.markdown("---")
+
+    col1, _ = st.columns([1, 1])
+    with col1:
+        if st.button("⬅️ Previous"):
+            st.session_state.page_index -= 1
+            st.rerun()
