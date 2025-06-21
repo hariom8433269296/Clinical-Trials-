@@ -40,10 +40,9 @@ if st.session_state.page_index == 0:
     for img_file, label, insight in charts:
         st.markdown(f"**{label}**")
         st.markdown(insight)
-        st.image(os.path.join(img_dir, img_file), width=650)
+        st.image(os.path.join(img_dir, img_file), width=590)
         st.markdown("---")
 
-    # Next button
     if st.session_state.page_index < len(pages) - 1:
         if st.button("Next ➡️"):
             st.session_state.page_index += 1
@@ -54,17 +53,23 @@ elif st.session_state.page_index == 1:
     st.header("📊 Distributions of Important Variables")
 
     distribution_charts = [
+        ("distribution_Enrollment.png", "Enrollment Count", "Higher enrollment indicates more representative trials but can also be harder to manage."),
+        ("distribution_Secondary Outcome Measures_count.png", "Secondary Outcomes Count", "More secondary outcomes may signal exploratory trials or broader analysis."),
         ("distribution_study_duration_days.png", "Study Duration", "Longer studies are more thorough and often more likely to succeed."),
         ("distribution_primary_outcome_duration_days.png", "Primary Outcome Time Window", "More time for outcome tracking helps measure true treatment effect."),
         ("distribution_max_time_window_month.png", "Max Duration for Outcome Capture", "Larger windows give more flexibility to see delayed effects."),
         ("distribution_registration_to_start_days.png", "Time from Registration to Trial Start", "Quick starts may reflect better planning and coordination."),
         ("distribution_num_locations.png", "Number of Trial Locations", "More locations show trial scale and generalizability."),
+        ("distribution_outcome_density.png", "Outcome Density", "High density near target outcomes can reflect efficient trial design."),
         ("distribution_sponsor_trial_count.png", "Number of Trials by Sponsor", "Sponsors with more experience tend to run stronger trials."),
-        ("distribution_novelty_per_followup_time.png", "Novelty vs Follow-Up Duration", "New ideas need enough follow-up time to gain trust.")
+        ("distribution_sponsor_trial_count_tier.png", "Sponsor Trial Tier", "Tiers represent trial volume bands, possibly reflecting sponsor credibility."),
+        ("distribution_novelty_per_followup_time.png", "Novelty vs Follow-Up Duration", "New ideas need enough follow-up time to gain trust."),
+        ("distribution_novel_drug_backed_by_sponsor.png", "Novel Drug Backed by Sponsor", "Support from established sponsors boosts approval chances of novel therapies.")
     ]
 
     for img_file, label, insight in distribution_charts:
         st.markdown(f"**{label}**")
         st.markdown(insight)
-        st.image(os.path.join(img_dir, img_file), width=1000)
+        width = 590 if "distribution_" in img_file and "barplot" not in img_file and "approval" in img_file else 1000
+        st.image(os.path.join(img_dir, img_file), width=width)
         st.markdown("---")
