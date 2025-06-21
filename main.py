@@ -30,13 +30,10 @@ if page == "Key Features and Their Influence on Outcome":
     ]
 
     for img_file, label, insight in charts:
-        col1, col2 = st.columns([1.2, 1.8])
-        with col1:
-            st.image(os.path.join(img_dir, img_file), caption=label, use_container_width=True)
-        with col2:
-            st.markdown(f"**{label}**")
-            st.markdown(insight)
-            st.markdown("---")
+        st.markdown(f"**{label}**")
+        st.markdown(insight)
+        st.image(os.path.join(img_dir, img_file), use_container_width=True)
+        st.markdown("---")
 
 # 2. Distribution of Numerical / Count Features
 elif page == "Distributions of Important Variables":
@@ -53,10 +50,7 @@ elif page == "Distributions of Important Variables":
     ]
 
     for img_file, label, insight in distribution_charts:
-        col1, col2 = st.columns([1.2, 1.8])
-        with col1:
-            st.image(os.path.join(img_dir, img_file), caption=label, use_container_width=True)
-        with col2:
-            st.markdown(f"**{label}**")
-            st.markdown(insight)
-            st.markdown("---")
+        st.markdown(f"**{label}**")
+        st.markdown(insight)
+        st.image(os.path.join(img_dir, img_file), use_container_width=True)
+        st.markdown("---")
