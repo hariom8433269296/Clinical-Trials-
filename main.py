@@ -8,19 +8,32 @@ warnings.filterwarnings("ignore")
 st.set_page_config(layout="wide")
 st.title("🧪 Clinical Trials Modeling Dashboard")
 
+# Session state to control navigation
+if "page_index" not in st.session_state:
+    st.session_state.page_index = 0
+
+pages = [
+    "Key Features and Their Influence on Outcome",
+    "Distributions of Important Variables"
+]
+
 # Sidebar navigation
 with st.sidebar:
     st.title("Navigation")
-    page = st.radio("Go to", [
-        "Key Features and Their Influence on Outcome",
-        "Distributions of Important Variables"
-    ])
+    selected_page = st.radio("Go to", pages, index=st.session_state.page_index)
+    st.session_state.page_index = pages.index(selected_page)
+
+# Next button
+if st.session_state.page_index < len(pages) - 1:
+    if st.button("Next ➡️"):
+        st.session_state.page_index += 1
+        st.experimental_rerun()
 
 # Image directory
 img_dir = "dashboard_images"
 
-# 1. Key Features and Their Influence
-if page == "Key Features and Their Influence on Outcome":
+# Page 1: Key Features and Their Influence
+if st.session_state.page_index == 0:
     st.header("📌 Key Features and Their Influence on Outcome")
 
     charts = [
@@ -36,8 +49,8 @@ if page == "Key Features and Their Influence on Outcome":
         st.image(os.path.join(img_dir, img_file), width=590)
         st.markdown("---")
 
-# 2. Distribution of Numerical / Count Features
-elif page == "Distributions of Important Variables":
+# Page 2: Distribution of Numerical / Count Features
+elif st.session_state.page_index == 1:
     st.header("📊 Distributions of Important Variables")
 
     distribution_charts = [
