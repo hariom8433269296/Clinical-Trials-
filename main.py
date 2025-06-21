@@ -35,7 +35,7 @@ if st.session_state.page_index == 0:
         ("approval_barplot_Age_CHILD.png", "Age Group: CHILD", "Trials that include children are carefully reviewed but often get approved when there's clear medical need."),
         ("approval_barplot_is_os_present.png", "Presence of Overall Survival Metric", "Using overall survival as a measure increases approval chances by showing treatment impact."),
         ("approval_barplot_is_response.png", "Use of Response Metrics", "Response metrics like tumor shrinkage help show early benefits, improving approval chances."),
-        ("approval_barplot_tumor_trial_with_survival.png", "Tumor Trial with Survival Measure", "Trials that combine cancer focus with survival goals show much higher approval rates.")
+        ("approval_barplot_tumor_trial_with_survival.png", "Tumor Trial with Survival Measure", "Trials that combine cancer focus with survival goals show lower approval rates.")
     ]
 
     for img_file, label, insight in charts:
