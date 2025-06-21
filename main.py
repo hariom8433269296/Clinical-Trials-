@@ -23,11 +23,6 @@ with st.sidebar:
     selected_page = st.radio("Go to", pages, index=st.session_state.page_index)
     st.session_state.page_index = pages.index(selected_page)
 
-# Next button
-if st.session_state.page_index < len(pages) - 1:
-    if st.button("Next ➡️"):
-        st.session_state.page_index += 1
-        st.experimental_rerun()
 
 # Image directory
 img_dir = "dashboard_images"
@@ -48,6 +43,12 @@ if st.session_state.page_index == 0:
         st.markdown(insight)
         st.image(os.path.join(img_dir, img_file), width=590)
         st.markdown("---")
+    # Next button
+    if st.session_state.page_index < len(pages) - 1:
+        if st.button("Next ➡️"):
+            st.session_state.page_index += 1
+            st.experimental_rerun()
+    
 
 # Page 2: Distribution of Numerical / Count Features
 elif st.session_state.page_index == 1:
