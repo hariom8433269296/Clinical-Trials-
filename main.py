@@ -9,11 +9,12 @@ st.set_page_config(layout="wide")
 st.title("🧪 Clinical Trials Modeling Dashboard")
 
 # Sidebar navigation
-st.sidebar.title("Navigation")
-page = st.sidebar.radio("Go to", [
-    "Key Features and Their Influence on Outcome",
-    "Distributions of Important Variables"
-])
+with st.sidebar:
+    st.title("Navigation")
+    page = st.radio("Go to", [
+        "Key Features and Their Influence on Outcome",
+        "Distributions of Important Variables"
+    ])
 
 # Image directory
 img_dir = "dashboard_images"
