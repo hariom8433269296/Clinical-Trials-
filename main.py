@@ -18,9 +18,6 @@ page = st.sidebar.radio("Go to", [
 # Image directory
 img_dir = "dashboard_images"
 
-# Scroll anchor
-st.markdown("<style>div[data-testid='stVerticalBlock'] { scroll-margin-top: 2rem; }</style>", unsafe_allow_html=True)
-
 # 1. Key Features and Their Influence
 if page == "Key Features and Their Influence on Outcome":
     st.header("📌 Key Features and Their Influence on Outcome")
@@ -35,11 +32,8 @@ if page == "Key Features and Their Influence on Outcome":
     for img_file, label, insight in charts:
         st.markdown(f"**{label}**")
         st.markdown(insight)
-        st.image(os.path.join(img_dir, img_file), width=850)
+        st.image(os.path.join(img_dir, img_file), width=590)
         st.markdown("---")
-
-    st.markdown("<a id='section2'></a>", unsafe_allow_html=True)
-    st.markdown("<script>window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'});</script>", unsafe_allow_html=True)
 
 # 2. Distribution of Numerical / Count Features
 elif page == "Distributions of Important Variables":
